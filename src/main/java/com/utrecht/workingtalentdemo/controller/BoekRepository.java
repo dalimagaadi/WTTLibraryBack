@@ -1,10 +1,15 @@
 package com.utrecht.workingtalentdemo.controller;
 
 import com.utrecht.workingtalentdemo.model.Boek;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
-@Component
-public interface BoekRepository extends CrudRepository<Boek, Long> {
+import java.util.List;
 
+@Component
+public interface BoekRepository extends JpaRepository<Boek, Long> {
+
+    @Query(value = "SELECT * from boek WHERE isbn = ?1", nativeQuery = true)
+    public List<Boek> findBoekByISBN(String isbn);
 }

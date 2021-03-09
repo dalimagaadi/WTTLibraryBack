@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Transactional
-@Service
+@Service("boekService")
 public class BoekService {
     @Autowired // Dependency injection  Java EE Bean Architecture
-    BoekRepository br;
+    private BoekRepository br;
 
     public void addBoek(Boek boek){
         br.save(boek);
@@ -18,7 +18,10 @@ public class BoekService {
         br.deleteById(id);
     }
 
-    public void getBoek(){};
+    public Boek getBoek(String isbn){
+        Boek bk = br.findBoekByISBN(isbn).get(0);
+        return bk;
+    };
 
     public Iterable<Boek> getAlleBoeken(){
         return br.findAll();

@@ -10,16 +10,13 @@ public class BoekEndpoint {
     @Autowired
     BoekService bs;
 
-//    @GetMapping("getTafel/{param}")
-//    public Boek getTafel(@PathVariable String param){
-//        // Aan te passen om op de wijk van de tafel te zoeken
-//        Boek nieuwBoek = new Boek();
-//        nieuwBoek.setBijHetRaam(true);
-//        nieuwBoek.setCapaciteit(3);
-//        nieuwBoek.setWijk(param);
-//        return nieuwBoek;
-//    }
-//
+    @GetMapping("getBoek/{isbn}")
+    public Boek getBoek(@PathVariable String isbn){
+        Boek nieuwBoek = new Boek();
+        nieuwBoek = bs.getBoek(isbn);
+        return nieuwBoek;
+    }
+
 //    @GetMapping("getAlleBoeken")
 //    public Iterable<Boek> getAlleTafels(){
 //        Iterable<Boek> alleTafels = ts.getAlleBoeken();

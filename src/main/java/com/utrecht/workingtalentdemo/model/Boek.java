@@ -1,16 +1,14 @@
 package com.utrecht.workingtalentdemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
+@Entity(name="boek")
 public class Boek {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     long id;
 
+    @Column(name = "ISBN")
     String ISBN;
     String titel;
     String auteur;
