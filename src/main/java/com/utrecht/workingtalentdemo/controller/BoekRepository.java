@@ -1,10 +1,10 @@
 package com.utrecht.workingtalentdemo.controller;
 
-import com.utrecht.workingtalentdemo.model.Tafel;
+import com.utrecht.workingtalentdemo.model.Boek;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface TafelRespository extends CrudRepository<Tafel, Long> {
+public interface BoekRepository extends CrudRepository<Boek, Long> {
 
 }
