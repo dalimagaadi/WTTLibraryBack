@@ -4,6 +4,7 @@ import com.utrecht.workingtalentdemo.model.Boek;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 @Service("boekService")
@@ -20,6 +21,10 @@ public class BoekService {
 
     public Boek getBoek(String isbn){
         Boek bk = br.findBoekByISBN(isbn).get(0);
+        return bk;
+    };
+    public List<Boek> searchBook(String searchTerm){
+       List<Boek> bk = br.finBySearchTerm(searchTerm);
         return bk;
     };
 

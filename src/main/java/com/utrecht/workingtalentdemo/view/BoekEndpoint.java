@@ -5,6 +5,9 @@ import com.utrecht.workingtalentdemo.model.Boek;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class BoekEndpoint {
     @Autowired
@@ -16,6 +19,14 @@ public class BoekEndpoint {
         nieuwBoek = bs.getBoek(isbn);
         return nieuwBoek;
     }
+
+    @GetMapping("searchBook/{searchTerm}")
+    public List<Boek> searchBook(@PathVariable String searchTerm){
+        List<Boek> gevondenBoeken = new ArrayList<Boek>();
+        gevondenBoeken = bs.searchBook(searchTerm);
+        return gevondenBoeken;
+    }
+
 
 //    @GetMapping("getAlleBoeken")
 //    public Iterable<Boek> getAlleTafels(){

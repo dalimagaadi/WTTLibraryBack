@@ -12,4 +12,9 @@ public interface BoekRepository extends JpaRepository<Boek, Long> {
 
     @Query(value = "SELECT * from boek WHERE isbn = ?1", nativeQuery = true)
     public List<Boek> findBoekByISBN(String isbn);
+
+    @Query(value = "SELECT * FROM boek WHERE ?1 in (ISBN,titel,auteur)", nativeQuery = true)
+    public List<Boek> finBySearchTerm(String searchTerm);
+
 }
+
