@@ -17,6 +17,10 @@ public class UserService {
     	User dummy = ur.findUser(email, password);
          return dummy;
     } 
+    
+    public void addUser(User user) {
+    	ur.save(user);
+    }
 }
 
 
