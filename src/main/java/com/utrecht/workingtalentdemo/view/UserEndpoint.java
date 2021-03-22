@@ -1,6 +1,7 @@
 package com.utrecht.workingtalentdemo.view;
 
 import com.utrecht.workingtalentdemo.controller.UserService;
+import com.utrecht.workingtalentdemo.model.Boek;
 import com.utrecht.workingtalentdemo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,5 +21,10 @@ public class UserEndpoint {
     
     }
     
+    @PostMapping("addUser")
+    public void addUser(@RequestBody User user){
+        us.addUser(user);
+        System.out.println("Toevoegen gelukt");
+    }
     
 }
