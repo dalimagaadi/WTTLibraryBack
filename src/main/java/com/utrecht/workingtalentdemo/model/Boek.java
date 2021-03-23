@@ -1,21 +1,25 @@
 package com.utrecht.workingtalentdemo.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity(name="boek")
 public class Boek {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
-    long id;
+    private long id;
 
     @Column(name = "ISBN")
-    String ISBN;
-    String titel;
-    String auteur;
-    String tags; //Eigen class of omzetten naar een list
-    String status;
-    int aantal;
-
+    private String ISBN;
+    private String titel;
+    private String auteur;
+    private String tags; //Eigen class of omzetten naar een list
+    private String status;
+    private int aantal;
+    @OneToMany
+    List<Exemplaar> exemplaren;
+    
     public long getId() {
         return id;
     }
@@ -71,4 +75,12 @@ public class Boek {
     public void setAantal(int aantal) {
         this.aantal = aantal;
     }
+
+	public List<Exemplaar> getExemplaren() {
+		return exemplaren;
+	}
+
+	public void setExemplaren(List<Exemplaar> exemplaren) {
+		this.exemplaren = exemplaren;
+	}
 }
