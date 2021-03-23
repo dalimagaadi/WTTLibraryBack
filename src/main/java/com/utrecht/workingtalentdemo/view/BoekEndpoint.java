@@ -2,6 +2,8 @@ package com.utrecht.workingtalentdemo.view;
 
 import com.utrecht.workingtalentdemo.controller.BoekService;
 import com.utrecht.workingtalentdemo.model.Boek;
+import com.utrecht.workingtalentdemo.model.Exemplaar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,5 +45,10 @@ public class BoekEndpoint {
     public void addBoek(@RequestBody Boek boek){
         bs.addBoek(boek);
         System.out.println("Toevoegen gelukt");
+    }
+    
+    @PostMapping("addExemplaar/{boekid}")
+    public void addExemplaar(@RequestBody Exemplaar exemplaar, @PathVariable long boekid) {
+    	bs.voegExemplaarToe(boekid, exemplaar);
     }
 }

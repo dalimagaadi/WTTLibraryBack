@@ -1,6 +1,8 @@
 package com.utrecht.workingtalentdemo.controller;
 
 import com.utrecht.workingtalentdemo.model.Boek;
+import com.utrecht.workingtalentdemo.model.Exemplaar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
@@ -11,6 +13,8 @@ import java.util.List;
 public class BoekService {
     @Autowired // Dependency injection  Java EE Bean Architecture
     private BoekRepository br;
+    @Autowired
+    private ExemplaarRepository er;
 
     public void addBoek(Boek boek){
         br.save(boek);
@@ -30,5 +34,14 @@ public class BoekService {
 
     public Iterable<Boek> getAlleBoeken(){
         return br.findAll();
+    }
+    
+    
+    public void voegExemplaarToe(long boekid, Exemplaar exemplaar) {
+    exemplaar = er.save(exemplaar);
+    Boek boek = br.findById(boekid).get();
+    boek.getExemplaren().add(exemplaar);
+    br.save(boek);
+    System.out.println("Test");
     }
 }
