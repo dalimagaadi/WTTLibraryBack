@@ -17,6 +17,7 @@ public class Exemplaar {
     long id;
 	
     String WTid;
+    String status;
 
 	public long getId() {
 		return id;
@@ -32,6 +33,14 @@ public class Exemplaar {
 
 	public void setWTid(String wTid) {
 		WTid = wTid;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
   
 }
