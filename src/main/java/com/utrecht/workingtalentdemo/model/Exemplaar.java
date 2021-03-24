@@ -1,14 +1,6 @@
 package com.utrecht.workingtalentdemo.model;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity(name="exemplaar")
 public class Exemplaar {
@@ -16,7 +8,7 @@ public class Exemplaar {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     long id;
 	
-    String WTid;
+    String wtid;
     String status;
 
 	public long getId() {
@@ -27,12 +19,12 @@ public class Exemplaar {
 		this.id = id;
 	}
 
-	public String getWTid() {
-		return WTid;
+	public String getWtid() {
+		return wtid;
 	}
 
-	public void setWTid(String wTid) {
-		WTid = wTid;
+	public void setWtid(String wTid) {
+		wtid = wTid;
 	}
 
 	public String getStatus() {

@@ -44,12 +44,11 @@ public class BoekEndpoint {
     @PostMapping("addBoek")
     public void addBoek(@RequestBody Boek boek){
         bs.addBoek(boek);
-        System.out.println("Toevoegen gelukt");
     }
     
     @PostMapping("addExemplaar/{isbn}")
     public void addExemplaar(@RequestBody Exemplaar exemplaar, @PathVariable String isbn) {
-    	System.out.println("test");
+
     	bs.voegExemplaarToe(isbn, exemplaar);
     	
     }

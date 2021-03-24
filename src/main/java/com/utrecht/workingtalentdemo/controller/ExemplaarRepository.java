@@ -12,7 +12,7 @@ import com.utrecht.workingtalentdemo.model.Exemplaar;
 @Component
 public interface ExemplaarRepository extends JpaRepository<Exemplaar, Long> {
 
-	@Query(value = "SELECT * FROM boek_exemplaren WHERE boek_isbn LIKE ?1%", nativeQuery = true)
-	public List<Exemplaar> searchExemplaarAmount(String isbn);
+	@Query(value = "SELECT COUNT(*) FROM `boek_exemplaren` WHERE boek_isbn = ?1", nativeQuery = true)
+	public int searchExemplaarAmount(String isbn);
 
 }

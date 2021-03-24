@@ -38,7 +38,9 @@ public class BoekService {
     
     
     public void voegExemplaarToe(String isbn, Exemplaar exemplaar) {
+//        System.out.println(exemplaar);
     exemplaar = er.save(exemplaar);
+//    Exemplaar ex = er.save(exemplaar);
     Boek boek = br.findByISBN(isbn).get(0);
     boek.getExemplaren().add(exemplaar);
     br.save(boek);
@@ -46,8 +48,8 @@ public class BoekService {
     }
     
     public int searchExemplaarAmount(String isbn) {
-    	List<Exemplaar> ex = er.searchExemplaarAmount(isbn);
-    	return ex.size() + 1;
+    	return er.searchExemplaarAmount(isbn);
+
     	
     }
 }
