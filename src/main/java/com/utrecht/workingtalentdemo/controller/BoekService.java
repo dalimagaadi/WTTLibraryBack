@@ -31,6 +31,11 @@ public class BoekService {
        List<Boek> bk = br.finBySearchTerm(searchTerm);
         return bk;
     };
+    
+    public List<Boek> searchAllBook(){
+        List<Boek> bkk = br.findAllBook();
+         return bkk;
+     };
 
     public Iterable<Boek> getAlleBoeken(){
         return br.findAll();

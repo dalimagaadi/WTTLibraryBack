@@ -28,6 +28,13 @@ public class BoekEndpoint {
         gevondenBoeken = bs.searchBook(searchTerm);
         return gevondenBoeken;
     }
+    
+    @GetMapping("searchAllBook")
+    public List<Boek> searchAllBook(){
+        List<Boek> gevondenAllBoeken = new ArrayList<Boek>();
+        gevondenAllBoeken = bs.searchAllBook();
+        return gevondenAllBoeken;
+    }
 
 
 //    @GetMapping("getAlleBoeken")
