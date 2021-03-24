@@ -15,6 +15,9 @@ public interface BoekRepository extends JpaRepository<Boek, Long> {
 
     @Query(value = "SELECT * FROM boek WHERE ISBN LIKE %?1% OR titel LIKE %?1% OR auteur LIKE %?1% OR tags LIKE %?1%", nativeQuery = true)
     public List<Boek> finBySearchTerm(String searchTerm);
+    
+    @Query(value = "SELECT * FROM `boek` ORDER BY `boek`.`titel` ASC", nativeQuery = true)
+    public List<Boek> findAllBook();
 
     List<Boek> findByISBN(String ISBN);
 }
