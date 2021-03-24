@@ -7,11 +7,9 @@ import javax.persistence.*;
 @Entity(name="boek")
 public class Boek {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
-    private long id;
-
     @Column(name = "ISBN")
     private String ISBN;
+
     private String titel;
     private String auteur;
     private String tags; //Eigen class of omzetten naar een list
@@ -20,13 +18,6 @@ public class Boek {
     @OneToMany
     List<Exemplaar> exemplaren;
     
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getISBN() {
         return ISBN;
