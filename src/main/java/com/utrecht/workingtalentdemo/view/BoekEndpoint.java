@@ -53,16 +53,18 @@ public class BoekEndpoint {
         bs.addBoek(boek);
     }
     
+    @PutMapping("bewerkBoek/{isbn}")
+    public void bewerkBoek(@PathVariable String isbn, @RequestBody Boek boek) {
+    	bs.addBoek(boek);
+    }
+    
     @PostMapping("addExemplaar/{isbn}")
     public void addExemplaar(@RequestBody Exemplaar exemplaar, @PathVariable String isbn) {
-
     	bs.voegExemplaarToe(isbn, exemplaar);
-    	
     }
     
     @GetMapping("searchExemplaarAmount/{isbn}")
     public int searchExemplaar(@PathVariable String isbn) {
     	return bs.searchExemplaarAmount(isbn);
-    	
     }
 }

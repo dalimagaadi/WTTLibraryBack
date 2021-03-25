@@ -27,6 +27,7 @@ public class BoekService {
         Boek bk = br.findBoekByISBN(isbn).get(0);
         return bk;
     };
+    
     public List<Boek> searchBook(String searchTerm){
        List<Boek> bk = br.finBySearchTerm(searchTerm);
         return bk;
@@ -54,7 +55,5 @@ public class BoekService {
     
     public int searchExemplaarAmount(String isbn) {
     	return er.searchExemplaarAmount(isbn);
-
-    	
     }
 }
