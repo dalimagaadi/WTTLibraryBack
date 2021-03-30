@@ -1,9 +1,13 @@
 package com.utrecht.workingtalentdemo.view;
 
 import com.utrecht.workingtalentdemo.controller.BoekService;
+import com.utrecht.workingtalentdemo.controller.ReserveringService;
+import com.utrecht.workingtalentdemo.controller.UserService;
 import com.utrecht.workingtalentdemo.model.Boek;
 import com.utrecht.workingtalentdemo.model.Exemplaar;
 
+import com.utrecht.workingtalentdemo.model.Reservering;
+import com.utrecht.workingtalentdemo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +19,11 @@ public class BoekEndpoint {
     @Autowired
     BoekService bs;
 
+    @Autowired
+    ReserveringService rs;
+
+    @Autowired
+    UserService us;
     @GetMapping("getBoek/{isbn}")
     public Boek getBoek(@PathVariable String isbn){
         Boek nieuwBoek = new Boek();
@@ -36,17 +45,14 @@ public class BoekEndpoint {
         return gevondenAllBoeken;
     }
 
-
-//    @GetMapping("getAlleBoeken")
-//    public Iterable<Boek> getAlleTafels(){
-//        Iterable<Boek> alleTafels = ts.getAlleBoeken();
-//        return alleTafels;
-//    }
-//    @DeleteMapping("deleteTafel/{id}")
-//    public void deleteTafel(@PathVariable long id){
-//        System.out.println("Deleted");
-//        ts.deleteBoek(id);
-//    }
+    @PostMapping("reserveer/{isbn}")
+    public Reservering addReservering(@RequestBody User user, @PathVariable String isbn){
+        // Vervangen met een methode die de gebruiker zoekt gebaseerd op alleen het email-adr?
+        // Momenteel is de wachtoword van de gebruiker nodig om de gebruiker terug te kunnen vinden
+        User _user = us.searchUser(user.getEmail(), user.getPassword());
+        Reservering _res = rs.addReservering(isbn, _user);
+         return _res;
+    }
 
     @PostMapping("addBoek")
     public void addBoek(@RequestBody Boek boek){

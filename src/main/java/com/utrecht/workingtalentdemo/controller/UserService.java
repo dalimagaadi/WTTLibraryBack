@@ -1,6 +1,7 @@
 package com.utrecht.workingtalentdemo.controller;
 
 import com.utrecht.workingtalentdemo.model.Boek;
+import com.utrecht.workingtalentdemo.model.Exemplaar;
 import com.utrecht.workingtalentdemo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,8 @@ public class UserService {
     	User dummy = ur.findUser(email, password);
          return dummy;
     } 
-    
+
+
     public void addUser(User user) {
     	ur.save(user);
     }
