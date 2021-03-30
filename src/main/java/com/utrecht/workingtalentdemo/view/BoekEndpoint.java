@@ -73,4 +73,9 @@ public class BoekEndpoint {
     public int searchExemplaar(@PathVariable String isbn) {
     	return bs.searchExemplaarAmount(isbn);
     }
+    
+    @GetMapping("searchBoekAantal/{isbn}")
+    public int searchBoekAantal(@PathVariable String isbn) {
+    	return bs.searchBoekAantal(isbn);
+    }
 }

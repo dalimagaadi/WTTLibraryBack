@@ -53,4 +53,8 @@ public class BoekService {
     public int searchExemplaarAmount(String isbn) {
     	return er.searchExemplaarAmount(isbn);
     }
+    
+    public int searchBoekAantal(String isbn) {
+    	return er.searchBoekAantal(isbn);
+    }
 }
