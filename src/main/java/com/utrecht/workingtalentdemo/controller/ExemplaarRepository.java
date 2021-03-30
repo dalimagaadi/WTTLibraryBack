@@ -14,5 +14,10 @@ public interface ExemplaarRepository extends JpaRepository<Exemplaar, Long> {
 
 	@Query(value = "SELECT COUNT(*) FROM `boek_exemplaren` WHERE boek_isbn = ?1", nativeQuery = true)
 	public int searchExemplaarAmount(String isbn);
+	
+	@Query(value = "SELECT `aantal` FROM `boek` WHERE isbn = ?1", nativeQuery = true)
+	public int searchBoekAantal(String isbn);
+	
+	
 
 }
