@@ -20,4 +20,8 @@ public interface ExemplaarRepository extends JpaRepository<Exemplaar, Long> {
 	
 	
 
+	@Query(value = "SELECT ex.* from `exemplaar` ex inner join `boek_exemplaren` bx on ex.id = bx.exemplaren_id " +
+			"WHERE bx.boek_isbn = ?1 and ex.status = 'beschikbaar' " +
+			"LIMIT 1", nativeQuery = true)
+	public Exemplaar getExemplaar(String isbn);
 }
