@@ -12,9 +12,10 @@ public class Boek {
 
     private String titel;
     private String auteur;
-    private String tags; //Eigen class of omzetten naar een list
+    private String tags;
     private String status;
     private int aantal;
+
     @OneToMany
     List<Exemplaar> exemplaren;
     

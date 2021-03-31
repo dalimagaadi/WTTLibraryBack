@@ -1,6 +1,7 @@
 package com.utrecht.workingtalentdemo.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="user")
 public class User {
@@ -13,8 +14,18 @@ public class User {
     String email;
     String password;
     Boolean adminrights;
-    
-    
+
+	@OneToMany(cascade = {CascadeType.ALL})
+	List<Reservering> reserveringen;
+
+	public List<Reservering> getReserveringen() {
+		return reserveringen;
+	}
+
+	public void setReserveringen(List<Reservering> reserveringen) {
+		this.reserveringen = reserveringen;
+	}
+
 	public long getId() {
 		return id;
 	}

@@ -44,16 +44,17 @@ public class BoekService {
     
     
     public void voegExemplaarToe(String isbn, Exemplaar exemplaar) {
-//        System.out.println(exemplaar);
-    exemplaar = er.save(exemplaar);
-//    Exemplaar ex = er.save(exemplaar);
-    Boek boek = br.findByISBN(isbn).get(0);
-    boek.getExemplaren().add(exemplaar);
-    br.save(boek);
-    System.out.println("Test");
+        exemplaar = er.save(exemplaar);
+        Boek boek = br.findByISBN(isbn).get(0);
+        boek.getExemplaren().add(exemplaar);
+        br.save(boek);
     }
     
     public int searchExemplaarAmount(String isbn) {
     	return er.searchExemplaarAmount(isbn);
+    }
+    
+    public int searchBoekAantal(String isbn) {
+    	return er.searchBoekAantal(isbn);
     }
 }
