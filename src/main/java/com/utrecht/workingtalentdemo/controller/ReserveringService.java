@@ -35,7 +35,8 @@ public class ReserveringService {
 
         user.getReserveringen().add(reservering);
         ur.save(user);
-        return rr.save(reservering);
+//      rr.save(reservering);
+        return reservering;
     }
 
     public Exemplaar getAvailableExemplaar(String isbn){

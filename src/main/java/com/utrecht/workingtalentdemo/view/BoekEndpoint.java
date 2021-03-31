@@ -8,6 +8,7 @@ import com.utrecht.workingtalentdemo.model.Exemplaar;
 
 import com.utrecht.workingtalentdemo.model.Reservering;
 import com.utrecht.workingtalentdemo.model.User;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,9 +46,9 @@ public class BoekEndpoint {
         return gevondenAllBoeken;
     }
 
-    @PostMapping("reserveer/{isbn}")
-    public Reservering addReservering(@RequestBody User user, @PathVariable String isbn){
-        User _user = us.searchUser(user.getEmail());
+    @PostMapping("reserveer/{isbn}/{email}")
+    public Reservering addReservering(@PathVariable String isbn, @PathVariable String email){
+        User _user = us.searchUser(email);
         Reservering _res = rs.addReservering(isbn, _user);
          return _res;
     }
