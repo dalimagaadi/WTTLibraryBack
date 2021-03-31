@@ -6,6 +6,7 @@ import com.utrecht.workingtalentdemo.model.Exemplaar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -43,11 +44,20 @@ public class BoekService {
     }
     
     
-    public void voegExemplaarToe(String isbn, Exemplaar exemplaar) {
-        exemplaar = er.save(exemplaar);
+    public void voegExemplaarToe(String isbn, List<Exemplaar> exemplaren) {
+        System.out.println(isbn);
+        List<Exemplaar> exemps = new ArrayList<Exemplaar>();
+        for(int i =0; i < exemplaren.size(); i++){
+            Exemplaar ex = er.save(exemplaren.get(i));
+            exemps.add(ex);
+        }
         Boek boek = br.findByISBN(isbn).get(0);
-        boek.getExemplaren().add(exemplaar);
+        for(int i=0; i<exemps.size(); i++){
+            Exemplaar ex = exemplaren.get(i);
+            boek.getExemplaren().add(ex);
+        }
         br.save(boek);
+
     }
     
     public int searchExemplaarAmount(String isbn) {
