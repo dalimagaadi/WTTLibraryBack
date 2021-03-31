@@ -15,7 +15,7 @@ public class User {
     String password;
     Boolean adminrights;
 
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL})
 	List<Reservering> reserveringen;
 
 	public List<Reservering> getReserveringen() {

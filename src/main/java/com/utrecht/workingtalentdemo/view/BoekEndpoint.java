@@ -47,9 +47,7 @@ public class BoekEndpoint {
 
     @PostMapping("reserveer/{isbn}")
     public Reservering addReservering(@RequestBody User user, @PathVariable String isbn){
-        // Vervangen met een methode die de gebruiker zoekt gebaseerd op alleen het email-adr?
-        // Momenteel is de wachtoword van de gebruiker nodig om de gebruiker terug te kunnen vinden
-        User _user = us.searchUser(user.getEmail(), user.getPassword());
+        User _user = us.searchUser(user.getEmail());
         Reservering _res = rs.addReservering(isbn, _user);
          return _res;
     }

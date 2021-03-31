@@ -12,7 +12,10 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 	
     @Query(value = "SELECT * FROM user WHERE (email =?1 AND password = ?2)" , nativeQuery = true)
-    public User findUser(String email, String password);
+    public User loginUser(String email, String password);
+
+    @Query(value = "SELECT * FROM user WHERE email =?1" , nativeQuery = true)
+    public User findUser(String email);
 
 
 }
