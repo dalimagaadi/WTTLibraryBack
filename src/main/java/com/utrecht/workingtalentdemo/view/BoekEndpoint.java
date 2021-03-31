@@ -8,6 +8,7 @@ import com.utrecht.workingtalentdemo.model.Exemplaar;
 
 import com.utrecht.workingtalentdemo.model.Reservering;
 import com.utrecht.workingtalentdemo.model.User;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,11 +46,9 @@ public class BoekEndpoint {
         return gevondenAllBoeken;
     }
 
-    @PostMapping("reserveer/{isbn}")
-    public Reservering addReservering(@RequestBody User user, @PathVariable String isbn){
-        // Vervangen met een methode die de gebruiker zoekt gebaseerd op alleen het email-adr?
-        // Momenteel is de wachtoword van de gebruiker nodig om de gebruiker terug te kunnen vinden
-        User _user = us.searchUser(user.getEmail(), user.getPassword());
+    @PostMapping("reserveer/{isbn}/{email}")
+    public Reservering addReservering(@PathVariable String isbn, @PathVariable String email){
+        User _user = us.searchUser(email);
         Reservering _res = rs.addReservering(isbn, _user);
          return _res;
     }

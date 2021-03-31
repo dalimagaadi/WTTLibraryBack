@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Transactional
 @Service("reserveringService")
@@ -22,6 +21,7 @@ public class ReserveringService {
 
     @Autowired
     UserRepository ur;
+
     public Reservering addReservering(String isbn, User user){
         Exemplaar beschikbaarExemplaar = getAvailableExemplaar(isbn);
         
@@ -35,11 +35,12 @@ public class ReserveringService {
 
         user.getReserveringen().add(reservering);
         ur.save(user);
-        return rr.save(reservering);
+//      rr.save(reservering);
+        return reservering;
     }
 
     public Exemplaar getAvailableExemplaar(String isbn){
-         Exemplaar ex = er.getExemplaar(isbn);
+         Exemplaar ex = er.getExemplaarByISBN(isbn);
          return ex;
     }
 }

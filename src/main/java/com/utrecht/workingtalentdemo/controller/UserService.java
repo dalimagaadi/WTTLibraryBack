@@ -14,10 +14,15 @@ public class UserService {
     @Autowired // Dependency injection  Java EE Bean Architecture
     private UserRepository ur;
     
-    public User searchUser(String email, String password){
-    	User dummy = ur.findUser(email, password);
+    public User loginUser(String email, String password){
+    	User dummy = ur.loginUser(email, password);
          return dummy;
-    } 
+    }
+
+    public User searchUser(String email){
+        User dummy = ur.findUser(email);
+        return dummy;
+    }
 
 
     public void addUser(User user) {
