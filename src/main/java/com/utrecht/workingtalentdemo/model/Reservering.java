@@ -10,10 +10,15 @@ public class Reservering {
 
     @OneToOne
     Exemplaar exemplaar;
+    
+   
 
     // isbn om makkelijker te queryen om welke boek het gaat?
     String isbn;
     String reserveringsDatum;
+    String user;
+    String titel;
+
 
     public long getId() {
         return id;
@@ -27,7 +32,23 @@ public class Reservering {
         this.exemplaar = exemplaar;
     }
 
-    public void setId(long id) {
+	public String getUser() {
+		return user;
+	}
+
+	public String getTitel() {
+		return titel;
+	}
+
+	public void setTitel(String titel) {
+		this.titel = titel;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public void setId(long id) {
         this.id = id;
     }
 
