@@ -65,8 +65,8 @@ public class BoekEndpoint {
     }
     
     @PostMapping("addExemplaar/{isbn}")
-    public void addExemplaar(@RequestBody Exemplaar exemplaar, @PathVariable String isbn) {
-    	bs.voegExemplaarToe(isbn, exemplaar);
+    public void addExemplaar(@RequestBody List<Exemplaar> exemplaren, @PathVariable String isbn) {
+    	bs.voegExemplaarToe(isbn, exemplaren);
     }
     
     @GetMapping("searchExemplaarAmount/{isbn}")
