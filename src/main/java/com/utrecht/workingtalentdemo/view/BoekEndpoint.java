@@ -48,7 +48,9 @@ public class BoekEndpoint {
     @PostMapping("reserveer/{isbn}/{email}")
     public Reservering addReservering(@PathVariable String isbn, @PathVariable String email){
         User _user = us.searchUser(email);
-        Reservering _res = rs.addReservering(isbn, _user);
+        Boek _boek = bs.getBoek(isbn);
+        String titel = _boek.getTitel(); 
+        Reservering _res = rs.addReservering(isbn, _user, email, titel);
          return _res;
     }
 
@@ -63,8 +65,8 @@ public class BoekEndpoint {
     }
     
     @PostMapping("addExemplaar/{isbn}")
-    public void addExemplaar(@RequestBody Exemplaar exemplaar, @PathVariable String isbn) {
-    	bs.voegExemplaarToe(isbn, exemplaar);
+    public void addExemplaar(@RequestBody List<Exemplaar> exemplaren, @PathVariable String isbn) {
+    	bs.voegExemplaarToe(isbn, exemplaren);
     }
     
     @GetMapping("searchExemplaarAmount/{isbn}")
@@ -75,5 +77,15 @@ public class BoekEndpoint {
     @GetMapping("searchBoekAantal/{isbn}")
     public int searchBoekAantal(@PathVariable String isbn) {
     	return bs.searchBoekAantal(isbn);
+    }
+    
+    @GetMapping("reserveringen")
+    public List<Reservering> reserveringen(){
+    	return rs.findReserveringen();
+    }
+    
+    @GetMapping("userReserveringen/{email}")
+    public List<Reservering> userReserveringen(@PathVariable String email){
+    	return rs.findUserReservering(email);
     }
 }
