@@ -8,7 +8,6 @@ import com.utrecht.workingtalentdemo.model.Exemplaar;
 
 import com.utrecht.workingtalentdemo.model.Reservering;
 import com.utrecht.workingtalentdemo.model.User;
-import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
