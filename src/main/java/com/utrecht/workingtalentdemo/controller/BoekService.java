@@ -51,6 +51,7 @@ public class BoekService {
             Exemplaar ex = er.save(exemplaren.get(i));
             exemps.add(ex);
         }
+        //Haal het boek
         Boek boek = br.findByISBN(isbn).get(0);
         for(int i=0; i<exemps.size(); i++){
             Exemplaar ex = exemplaren.get(i);

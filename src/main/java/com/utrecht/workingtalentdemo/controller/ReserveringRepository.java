@@ -16,5 +16,7 @@ public interface ReserveringRepository extends JpaRepository<Reservering, Long> 
 	
 	@Query(value = "SELECT * FROM reservering WHERE user = ?1", nativeQuery = true)
     public List<Reservering> findUserReservering(String email);
-	
+
+	@Query(value = "SELECT * from reservering where exemplaar_id = ?1",nativeQuery = true)
+    public Reservering findExemplaarReservering(long exemplaarID);
 }

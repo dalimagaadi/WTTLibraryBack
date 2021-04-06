@@ -88,4 +88,20 @@ public class BoekEndpoint {
     public List<Reservering> userReserveringen(@PathVariable String email){
     	return rs.findUserReservering(email);
     }
+
+    @GetMapping("getExemplaarReservering/{exemplaarID}")
+    public Reservering getExemplaarReservering(@PathVariable long exemplaarID){
+        return rs.getExemplaarReservering(exemplaarID);
+    }
+
+    @PostMapping("leenBoekUit")
+    public void leenBoekUit(@RequestBody Reservering res){
+        rs.leenExemplaarUit(res);
+    }
+
+    @PostMapping("brengBoekTerug/{email}")
+    public void brengBoekTerug(@RequestBody Reservering reservering, @PathVariable String email){
+        User user= us.searchUser(reservering.getUser());
+        rs.brengExemplaarTerug(reservering,user);
+    }
 }

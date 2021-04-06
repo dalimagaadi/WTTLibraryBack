@@ -42,10 +42,30 @@ public class ReserveringService {
 //      rr.save(reservering);
         return reservering;
     }
-
+    public Reservering getExemplaarReservering(long exemplaarID ){
+        return rr.findExemplaarReservering(exemplaarID);
+    }
     public Exemplaar getAvailableExemplaar(String isbn){
          Exemplaar ex = er.getExemplaarByISBN(isbn);
          return ex;
+    }
+
+    public void leenExemplaarUit(Reservering reservering){
+        Exemplaar ex = reservering.getExemplaar();
+        ex.setStatus("Uitgeleend");
+        er.save(ex);
+        String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        reservering.setUitleenDatum(datum);
+        rr.save(reservering);
+    }
+
+    public void brengExemplaarTerug(Reservering reservering, User user){
+        long reserveringId = reservering.getId();
+        user.getReserveringen().removeIf(obj -> obj.getId() == reserveringId);
+        Exemplaar ex = reservering.getExemplaar();
+        ex.setStatus("Beschikbaar");
+        er.save(ex);
+        ur.save(user);
     }
     
     public List<Reservering> findReserveringen(){

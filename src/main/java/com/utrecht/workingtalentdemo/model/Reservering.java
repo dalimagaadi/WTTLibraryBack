@@ -16,6 +16,7 @@ public class Reservering {
     // isbn om makkelijker te queryen om welke boek het gaat?
     String isbn;
     String reserveringsDatum;
+    String uitleenDatum;
     String user;
     String titel;
 
@@ -67,5 +68,14 @@ public class Reservering {
     public void setReserveringsDatum(String status) {
         this.reserveringsDatum = status;
     }
+
+    public String getUitleenDatum() {
+        return uitleenDatum;
+    }
+
+    public void setUitleenDatum(String uitleenDatum) {
+        this.uitleenDatum = uitleenDatum;
+    }
+
 
 }
